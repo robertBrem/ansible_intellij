@@ -1,0 +1,15 @@
+---
+- name: download IntelliJ
+  get_url:
+    url: https://download.jetbrains.com/idea/ideaIU-{{ version_no }}.tar.gz
+    dest: "{{ dest_folder }}"
+
+- name: unzip IntelliJ
+  unarchive:
+    src: "{{ dest_folder }}/ideaIU-{{ version_no }}.tar.gz"
+    dest: "{{ dest_folder }}"
+
+- name: delete tar
+  file:
+    path: "{{ dest_folder }}/ideaIU-{{ version_no }}.tar.gz"
+    state: absent
